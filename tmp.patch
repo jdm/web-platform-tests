@@ -1,0 +1,11 @@
+diff --git a/tests/wpt/web-platform-tests/html/browsers/origin/origin-of-data-document.html b/tests/wpt/web-platform-tests/html/browsers/origin/origin-of-data-document.html
+index 345a3a6b73bb..1f8a9b92409a 100644
+--- a/tests/wpt/web-platform-tests/html/browsers/origin/origin-of-data-document.html
++++ b/tests/wpt/web-platform-tests/html/browsers/origin/origin-of-data-document.html
+@@ -1,5 +1,6 @@
+ <!doctype html>
+ <html>
++  <!-- ignore me -->
+   <head>
+     <meta charset=utf-8>
+     <title>Origin of document produced from a 'data:' URL</title>
