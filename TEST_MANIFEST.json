@@ -1,0 +1,63 @@
+{
+ "items": {
+  "reftest": {
+   "./test-ref.html": [
+    [
+     "/./test-ref.html",
+     [
+      [
+       "/test-ref2.html",
+       "=="
+      ]
+     ],
+     {}
+    ]
+   ],
+   "./test.html": [
+    [
+     "/./test.html",
+     [
+      [
+       "/test-ref.html",
+       "=="
+      ]
+     ],
+     {}
+    ]
+   ]
+  },
+  "reftest_node": {},
+  "support": {
+   "./lint.whitelist": [
+    [
+     {}
+    ]
+   ],
+   "./test-ref2.html": [
+    [
+     {}
+    ]
+   ]
+  }
+ },
+ "paths": {
+  "./lint.whitelist": [
+   "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+   "support"
+  ],
+  "./test-ref.html": [
+   "f272873c748a699f3f87e5808f27f9ce2e077982",
+   "reftest"
+  ],
+  "./test-ref2.html": [
+   "55ca6286e3e4f4fba5d0448333fa99fc5a404a73",
+   "support"
+  ],
+  "./test.html": [
+   "02d0e8f3d5dbbf87730447c236d520f978ee642e",
+   "reftest"
+  ]
+ },
+ "url_base": "/",
+ "version": 4
+}
