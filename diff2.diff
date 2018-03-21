@@ -1,0 +1,5 @@
+diff --git a/tests/wpt/web-platform-tests/wpt.py b/tests/wpt/web-platform-tests/wpt-moved.py
+similarity index 100%
+rename from tests/wpt/web-platform-tests/wpt.py
+rename to tests/wpt/web-platform-tests/wpt-moved.py
+
