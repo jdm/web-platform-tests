@@ -98,7 +98,6 @@ def check_environ(product):
     if product not in ("firefox", "servo"):
         config = serve.load_config(os.path.join(wpt_root, "config.default.json"),
                                    os.path.join(wpt_root, "config.json"))
-        config = serve.normalise_config(config, {})
         expected_hosts = (set(config["domains"].itervalues()) ^
                           set(config["not_domains"].itervalues()))
         missing_hosts = set(expected_hosts)
@@ -117,13 +116,13 @@ def check_environ(product):
                 if platform.uname()[0] != "Windows":
                     message = """Missing hosts file configuration. Run
 
-python wpt make-hosts-file >> %s
-
-from a shell with Administrator privileges.""" % hosts_path
+./wpt make-hosts-file | sudo tee -a %s""" % hosts_path
                 else:
                     message = """Missing hosts file configuration. Run
 
-./wpt make-hosts-file | sudo tee -a %s""" % hosts_path
+python wpt make-hosts-file >> %s
+
+from a shell with Administrator privileges.""" % hosts_path
                 raise WptrunError(message)
 
 
