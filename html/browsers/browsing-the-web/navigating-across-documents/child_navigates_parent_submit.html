@@ -7,6 +7,7 @@
 var t = async_test();
 var events = [];
 onmessage = t.step_func(function(e) {
+  console.log(e.target == window)
   events.push(e.data);
   if (events.length == 3) {
     assert_array_equals(events, ["initial", "inner", "destination"]);
