@@ -193,7 +193,7 @@ class TestExecutor(object):
         if hasattr(e, "status") and e.status in test.result_cls.statuses:
             status = e.status
         else:
-            status = "ERROR"
+            status = "INTERNAL-ERROR"
         message = unicode(getattr(e, "message", ""))
         if message:
             message += "\n"
@@ -406,7 +406,7 @@ class WdspecRun(object):
             if message:
                 message += "\n"
             message += traceback.format_exc(e)
-            self.result = False, ("ERROR", message)
+            self.result = False, ("INTERNAL-ERROR", message)
         finally:
             self.result_flag.set()
 
@@ -437,6 +437,8 @@ class ConnectionlessProtocol(Protocol):
 
 class WebDriverProtocol(Protocol):
     server_cls = None
+
+    implements = [ConnectionlessBaseProtocolPart]
 
     def __init__(self, executor, browser):
         Protocol.__init__(self, executor, browser)

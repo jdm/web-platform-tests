@@ -14,6 +14,8 @@ from .utils import get_port
 _renamed_props = {
     "host": "browser_host",
     "bind_hostname": "bind_address",
+    "external_host": "server_host",
+    "host_ip": "server_host",
 }
 
 
@@ -214,7 +216,7 @@ class Config(Mapping):
 
     @property
     def ssl_config(self):
-        key_path, cert_path = self.ssl_env.host_cert_path(self.domains)
+        key_path, cert_path = self.ssl_env.host_cert_path(self.domains.itervalues())
         return {"key_path": key_path,
                 "cert_path": cert_path,
                 "encrypt_after_connect": self.ssl["encrypt_after_connect"]}
