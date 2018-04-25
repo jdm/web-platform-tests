@@ -201,8 +201,7 @@ Consider installing certutil via your OS package manager or directly.""")
                 kwargs["test_types"].remove("wdspec")
 
         if kwargs["prefs_root"] is None:
-            print("Downloading gecko prefs")
-            prefs_root = self.browser.install_prefs(self.venv.path)
+            prefs_root = self.browser.install_prefs(kwargs["binary"], self.venv.path)
             kwargs["prefs_root"] = prefs_root
 
 
@@ -458,7 +457,8 @@ def run(venv, **kwargs):
 
 def run_single(venv, **kwargs):
     from wptrunner import wptrunner
-    return wptrunner.start(**kwargs)
+    wptrunner.start(**kwargs)
+    return
 
 
 def main():
