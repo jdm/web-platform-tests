@@ -135,6 +135,7 @@ class TestEnvironment(object):
 
     def load_config(self):
         default_config_path = os.path.join(serve_path(self.test_paths), "config.default.json")
+        override_path = os.path.join(serve_path(self.test_paths), "config.json")
 
         with open(default_config_path) as f:
             default_config = json.load(f)
@@ -144,8 +145,15 @@ class TestEnvironment(object):
         config.ports = {
             "http": [8000, 8001],
             "https": [8443],
-            "ws": [8888]
+            "ws": [8888],
+            "wss": [8889],
         }
+
+        if os.path.exists(override_path):
+            with open(override_path) as f:
+                override_obj = json.load(f)
+            config.update(override_obj)
+
         config.check_subdomains = False
         config.ssl = {}
 
@@ -214,7 +222,7 @@ class TestEnvironment(object):
 
     def ensure_started(self):
         # Pause for a while to ensure that the server has a chance to start
-        for _ in xrange(20):
+        for _ in xrange(60):
             failed = self.test_servers()
             if not failed:
                 return
